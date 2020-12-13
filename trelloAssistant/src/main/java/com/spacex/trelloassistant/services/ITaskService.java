@@ -8,6 +8,6 @@ public interface ITaskService {
 
     Iterable<Task>findall();
     Task save (Task task);
-    Optional<Task>findBy(long id);
-    void deleteBy (long id);
+    Optional<Task>findBy(Long id);
+    void deleteBy (Long id);
 }

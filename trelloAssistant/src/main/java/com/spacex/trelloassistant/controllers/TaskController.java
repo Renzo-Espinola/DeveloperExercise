@@ -24,8 +24,8 @@ public class TaskController {
     @GetMapping
     public ResponseEntity<?>listAll() {return ResponseEntity.ok().body(taskService.findall()); }
 
-    @GetMapping("/{idTask}")
-    public ResponseEntity<?>findIdTask(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?>findIdTask(@PathVariable Long id) {
         Optional<Task> task = taskService.findBy(id);
         if (task.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -33,8 +33,8 @@ public class TaskController {
         return ResponseEntity.ok(task.get());
     }
 
-    @PutMapping({"/idTask"})
-    public ResponseEntity<?> editTask(@RequestBody Task task, @PathVariable long id){
+    @PutMapping({"/{id}"})
+    public ResponseEntity<?> editTask(@RequestBody Task task, @PathVariable Long id){
         Optional<Task> task1 = taskService.findBy(id);
         if(task1.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -45,8 +45,8 @@ public class TaskController {
         taskDb.setTitle(task.getTitle());
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.save(taskDb));
     }
-    @DeleteMapping("/{IdTask}")
-    public ResponseEntity<?> deleteTask(@PathVariable long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTask(@PathVariable Long id){
         taskService.deleteBy(id);
         return ResponseEntity.noContent().build();
     }

@@ -28,12 +28,12 @@ public class taskServiceImpl implements ITaskService {
     }
 
     @Override
-    public Optional<Task> findBy(long id) {
+    public Optional<Task> findBy(Long id) {
         return taskRepository.findById(id);
     }
 
     @Override
-    public void deleteBy(long id) {
+    public void deleteBy(Long id) {
     taskRepository.deleteById(id);
     }
 }
