@@ -6,9 +6,9 @@ INSERT INTO Category (category) VALUES
 ('Test');
 
 INSERT INTO type_task (default_tag,type,has_Title,has_Description,has_Category) VALUES
-('BUG','ISSUE',true,true,false),
+('ISSUE','ISSUE',true,true,false),
 ('BUG','bug',false,true,false),
-('BUG','TASK',true,false,false);
+('TASK','TASK',true,false,false);
 
 
 

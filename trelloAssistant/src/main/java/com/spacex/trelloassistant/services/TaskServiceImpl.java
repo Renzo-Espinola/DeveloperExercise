@@ -11,14 +11,14 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class taskServiceImpl implements ITaskService {
+public class TaskServiceImpl implements ITaskService {
 
     @Autowired
     private TaskRepository taskRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Task> findall() {
+    public Iterable<Task> findAll() {
         return taskRepository.findAll();
     }
 
@@ -36,4 +36,5 @@ public class taskServiceImpl implements ITaskService {
     public void deleteBy(Long id) {
     taskRepository.deleteById(id);
     }
+
 }

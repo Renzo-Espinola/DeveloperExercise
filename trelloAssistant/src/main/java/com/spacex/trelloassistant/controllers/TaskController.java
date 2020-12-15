@@ -7,8 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.Path;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @RestController
 @RequestMapping("/Api Tasks")
@@ -22,7 +23,7 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.CREATED).body(taskDb);
     }
     @GetMapping
-    public ResponseEntity<?>listAll() {return ResponseEntity.ok().body(taskService.findall()); }
+    public ResponseEntity<?>listAll() {return ResponseEntity.ok().body(taskService.findAll()); }
 
     @GetMapping("/{id}")
     public ResponseEntity<?>findIdTask(@PathVariable Long id) {
@@ -50,4 +51,6 @@ public class TaskController {
         taskService.deleteBy(id);
         return ResponseEntity.noContent().build();
     }
+    
+
 }
