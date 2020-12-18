@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeTask {
+public class TypeTaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -21,7 +21,7 @@ public class TypeTask {
     @Column
     private String type;
     @OneToOne
-    private Task task;
+    private TaskEntity taskEntity;
     @Column(name = "DEFAULT_TAG")
     private String defaultTag;
     @Column(name = "HAS_TITLE")

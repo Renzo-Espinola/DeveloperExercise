@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Task {
+public class TaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -23,7 +23,7 @@ public class Task {
     @Column
     private String title;
     @OneToOne
-    private Category category;
-    /*@OneToOne
-    private TypeTask typeTask;*/
+    private CategoryEntity categoryEntity;
+    @OneToOne
+    private TypeTaskEntity typeTaskEntity;
 }
