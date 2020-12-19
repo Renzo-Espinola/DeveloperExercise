@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface ITaskService {
 
     Iterable<TaskEntity>findAll();
-    TaskEntity save (TaskEntity taskEntity);
+    String save (TaskEntity taskEntity);
     Optional<TaskEntity>findBy(Long id);
     void deleteBy (Long id);
 }

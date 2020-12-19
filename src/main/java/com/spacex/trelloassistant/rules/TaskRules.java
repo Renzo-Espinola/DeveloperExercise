@@ -13,44 +13,77 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 
 public class TaskRules {
-private static Logger logger = LoggerFactory.getLogger(TaskRules.class);
-TaskException exception;
-    public TaskEntity crearObjetoTaskValido(TaskEntity taskEntity, TypeTaskEntity tipoTarea) {
+    private static Logger logger = LoggerFactory.getLogger(TaskRules.class);
 
-        TaskEntity saveTask = new TaskEntity();
+    TaskEntity validTask = new TaskEntity();
 
-        //CATEGORY
+    public Optional<TaskEntity> crearObjetoTaskValido(TaskEntity taskEntity, TypeTaskEntity tipoTarea) throws TaskException {
+
+        Optional<TaskEntity> saveOptionalTask = Optional.empty();
+
+            if (applyRuleCategory(taskEntity, tipoTarea) == true
+                    && applyRuleTitle(taskEntity, tipoTarea) == true
+                    && applyRuleDescription(taskEntity, tipoTarea) == true) {
+                saveOptionalTask = Optional.of(validTask);
+            }
+
+        return saveOptionalTask;
+    }
+
+    private boolean applyRuleCategory(TaskEntity taskEntity, TypeTaskEntity tipoTarea) throws TaskException {
+        boolean response = true;
         if (tipoTarea.isHasCategory()) {
             if (taskEntity.getCategoryEntity() != null) {
-                saveTask.setCategoryEntity(taskEntity.getCategoryEntity());
+                validTask.setCategoryEntity(taskEntity.getCategoryEntity());
+                response = true;
             } else {
-                logger.warn("Missing Category",exception);
+                response = false;
+                throw new TaskException("Missing Category");
+
             }
         } else if (taskEntity.getCategoryEntity() != null) {
-            logger.error("No deberia tener categorua este tipo de tarea",exception);
+            response = false;
+            throw new TaskException("No deberia tener categorua este tipo de tarea");
         }
+        return response;
+    }
 
-        //TITLE
+    private boolean applyRuleTitle(TaskEntity taskEntity, TypeTaskEntity tipoTarea) throws TaskException {
+        boolean response = true;
         if (tipoTarea.isHasTitle()) {
             if (taskEntity.getTitle() != null) {
-                saveTask.setTitle(taskEntity.getTitle());
+                validTask.setTitle(taskEntity.getTitle());
+                response = true;
             } else {
-                logger.warn("Missing Title",exception);
+                response = false;
+
+                throw new TaskException("Missing Title");
+
             }
         } else if (taskEntity.getTitle() != null) {
-            logger.error("No deberia tener titulo este tipo de tarea",exception);
+            response = false;
+            throw new TaskException("No deberia tener titulo este tipo de tarea");
         }
-        //DESCRIPTION
-        if (tipoTarea.isHasDescription()) {
-
-            if (taskEntity.getDescription() != null) {
-                saveTask.setDescription(taskEntity.getDescription());
-            } else {
-                logger.warn("falta descripcion",exception);}
-
-            }else if (taskEntity.getDescription() != null) {
-                logger.error("no deberia tener descripcion esta tarea ",exception);
-            }
-            return saveTask;
-        }
+        return response;
     }
+
+    private boolean applyRuleDescription(TaskEntity taskEntity, TypeTaskEntity tipoTarea) throws TaskException {
+        boolean response = true;
+        if (tipoTarea.isHasDescription()) {
+            if (taskEntity.getDescription() != null) {
+                validTask.setDescription(taskEntity.getDescription());
+                response = true;
+            } else {
+                response = false;
+                throw new TaskException("falta descripcion");
+            }
+        } else if (taskEntity.getDescription() != null) {
+            response = false;
+            throw new TaskException("no deberia tener descripcion esta tarea");
+        }
+        return response;
+    }
+
+}
+
+

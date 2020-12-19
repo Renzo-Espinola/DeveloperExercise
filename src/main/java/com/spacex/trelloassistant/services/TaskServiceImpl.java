@@ -1,5 +1,6 @@
 package com.spacex.trelloassistant.services;
 
+import com.spacex.trelloassistant.exceptions.TaskException;
 import com.spacex.trelloassistant.models.entity.TaskEntity;
 import com.spacex.trelloassistant.models.entity.TypeTaskEntity;
 import com.spacex.trelloassistant.models.repository.TaskRepository;
@@ -31,8 +32,9 @@ public class TaskServiceImpl implements ITaskService {
 
     @Override
 
-    public TaskEntity save(TaskEntity taskEntity) {
-
+    public String save(TaskEntity taskEntity) {
+        String message = "";
+        String messageError = "";
         TypeTaskEntity typeTaskValid = new TypeTaskEntity();
         TaskRules taskRules = new TaskRules();
         typeTask = taskEntity.getTypeTaskEntity();
@@ -43,16 +45,23 @@ public class TaskServiceImpl implements ITaskService {
         } else {
             logger.error("No task for this ID");
         }
-
-        TaskEntity taskValid = taskRules.crearObjetoTaskValido(taskEntity,typeTaskValid);
-        if (taskValid != null) {
-            logger.info("Task Ok");
-            return taskRepository.save(taskValid);
-        } else {
-            logger.error("Task Error");
-            return taskRepository.save(taskEntity);
+        Optional<TaskEntity> taskValid = Optional.empty();
+        try {
+            taskValid = taskRules.crearObjetoTaskValido(taskEntity, typeTaskValid);
+        } catch (TaskException ex) {
+            messageError = ex.getMessage();
         }
+        if (taskValid.isPresent()) {
+            logger.info("Task Ok");
+            taskRepository.save(taskValid.get());
+            message = "TASK SAVE";
+        } else {
+            logger.error("Task not Save");
+            message = "TASK NOT SAVE "+ messageError;
+        }
+        return message;
     }
+
     @Override
     public Optional<TaskEntity> findBy(Long id) {
         return taskRepository.findById(id);

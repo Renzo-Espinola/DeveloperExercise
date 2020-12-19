@@ -24,7 +24,7 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<?> saveTask(@RequestBody TaskEntity taskEntity){
-        TaskEntity taskEntityDb =taskService.save(taskEntity);
+        String taskEntityDb =taskService.save(taskEntity);
         logger.info("New task Created");
         return ResponseEntity.status(HttpStatus.CREATED).body(taskEntityDb);
 

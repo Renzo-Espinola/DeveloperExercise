@@ -20,8 +20,6 @@ public class TypeTaskEntity {
     private Long id;
     @Column
     private String type;
-    @OneToOne
-    private TaskEntity taskEntity;
     @Column(name = "DEFAULT_TAG")
     private String defaultTag;
     @Column(name = "HAS_TITLE")
