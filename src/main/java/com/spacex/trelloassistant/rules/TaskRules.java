@@ -1,14 +1,10 @@
 package com.spacex.trelloassistant.rules;
 
 import com.spacex.trelloassistant.exceptions.TaskException;
-import com.spacex.trelloassistant.models.entity.TaskEntity;
-import com.spacex.trelloassistant.models.entity.TypeTaskEntity;
-import com.spacex.trelloassistant.models.model.Task;
-import com.spacex.trelloassistant.models.repository.TaskRepository;
-import com.spacex.trelloassistant.models.repository.TypeTaskRepository;
+import com.spacex.trelloassistant.entity.TaskEntity;
+import com.spacex.trelloassistant.entity.TypeTaskEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
@@ -43,7 +39,7 @@ public class TaskRules {
             }
         } else if (taskEntity.getCategoryEntity() != null) {
             response = false;
-            throw new TaskException("No deberia tener categorua este tipo de tarea");
+            throw new TaskException("No deberia tener categoria este tipo de tarea");
         }
         return response;
     }

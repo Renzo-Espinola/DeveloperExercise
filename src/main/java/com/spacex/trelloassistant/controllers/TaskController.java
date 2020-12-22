@@ -1,6 +1,6 @@
 package com.spacex.trelloassistant.controllers;
-
-import com.spacex.trelloassistant.models.entity.TaskEntity;
+import com.spacex.trelloassistant.entity.TaskEntity;
+import com.spacex.trelloassistant.repository.TaskRepository;
 import com.spacex.trelloassistant.rules.TaskRules;
 import com.spacex.trelloassistant.services.ITaskService;
 import org.slf4j.Logger;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -21,6 +20,7 @@ public class TaskController {
     @Autowired
     private ITaskService taskService;
     private TaskRules taskRules;
+    private TaskRepository taskRepository;
 
     @PostMapping
     public ResponseEntity<?> saveTask(@RequestBody TaskEntity taskEntity){
@@ -30,6 +30,7 @@ public class TaskController {
 
     }
     @GetMapping
+    @RequestMapping("listAll")
     public ResponseEntity<?>listAll() {return ResponseEntity.ok().body(taskService.findAll()); }
 
     @GetMapping("/{id}")
@@ -40,7 +41,7 @@ public class TaskController {
             return ResponseEntity.notFound().build();
         }
         logger.info("TASKS REQUESTED");
-        return ResponseEntity.ok(task.get());
+        return ResponseEntity.ok(task);
     }
     @PutMapping({"/{id}"})
 
@@ -54,6 +55,7 @@ public class TaskController {
         taskEntityDb.setCategoryEntity(taskEntity.getCategoryEntity());
         taskEntityDb.setDescription(taskEntity.getDescription());
         taskEntityDb.setTitle(taskEntity.getTitle());
+        taskEntityDb.setTypeTaskEntity(taskEntity.getTypeTaskEntity());
         logger.info("TASKS UPDATED");
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.save(taskEntityDb));
     }

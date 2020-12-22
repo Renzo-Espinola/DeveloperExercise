@@ -1,10 +1,12 @@
 package com.spacex.trelloassistant.services;
 
+import com.spacex.trelloassistant.exceptions.ObjectNotFoundException;
 import com.spacex.trelloassistant.exceptions.TaskException;
-import com.spacex.trelloassistant.models.entity.TaskEntity;
-import com.spacex.trelloassistant.models.entity.TypeTaskEntity;
-import com.spacex.trelloassistant.models.repository.TaskRepository;
-import com.spacex.trelloassistant.models.repository.TypeTaskRepository;
+import com.spacex.trelloassistant.entity.TaskEntity;
+import com.spacex.trelloassistant.entity.TypeTaskEntity;
+
+import com.spacex.trelloassistant.repository.TaskRepository;
+import com.spacex.trelloassistant.repository.TypeTaskRepository;
 import com.spacex.trelloassistant.rules.TaskRules;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +33,6 @@ public class TaskServiceImpl implements ITaskService {
     }
 
     @Override
-
     public String save(TaskEntity taskEntity) {
         String message = "";
         String messageError = "";
@@ -43,7 +44,7 @@ public class TaskServiceImpl implements ITaskService {
         if (typetaskOptional.isPresent()) {
             typeTaskValid = typetaskOptional.get();
         } else {
-            logger.error("No task for this ID");
+            throw new ObjectNotFoundException("No task for this ID");
         }
         Optional<TaskEntity> taskValid = Optional.empty();
         try {
@@ -57,19 +58,38 @@ public class TaskServiceImpl implements ITaskService {
             message = "TASK SAVE";
         } else {
             logger.error("Task not Save");
-            message = "TASK NOT SAVE "+ messageError;
+            message = "TASK NOT SAVE " + messageError;
         }
         return message;
     }
 
     @Override
     public Optional<TaskEntity> findBy(Long id) {
-        return taskRepository.findById(id);
+        Optional<TaskEntity> message= null;
+        try {
+            if (id != null) {
+                message= taskRepository.findById(id);
+
+            }
+        } catch (ObjectNotFoundException ob) {
+            logger.error(ob.getMessage());
+        }
+        return message;
     }
 
     @Override
-    public void deleteBy(Long id) {
-        taskRepository.deleteById(id);
+    public String deleteBy(Long id) {
+        String message= null;
+        try {
+            if (id != null) {
+                taskRepository.deleteById(id);
+                message="ID FOUND";
+            }
+
+        } catch (ObjectNotFoundException ob) {
+            String messageObError = ob.getMessage();
+        }
+        return message;
     }
 
 }

@@ -479,17 +479,17 @@ org.springframework.boot.devtools.restart.classloader.RestartClassLoader@25a2719
 2020-12-17 21:40:17.942 DEBUG 16644 --- [restartedMain] .c.JpaMetamodelMappingContextFactoryBean : Finished initializing JpaMetamodelMappingContext!
 2020-12-17 21:40:18.066 DEBUG 16644 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
 2020-12-17 21:40:18.208 DEBUG 16644 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:40:18.229 DEBUG 16644 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.TypeTaskEntity] because it is not cache-safe
-2020-12-17 21:40:18.285 DEBUG 16644 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.TaskEntity] because it is not cache-safe
-2020-12-17 21:40:18.293 DEBUG 16644 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.CategoryEntity] because it is not cache-safe
-2020-12-17 21:40:18.306 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for com.spacex.trelloassistant.models.repository.TypeTaskRepository…
+2020-12-17 21:40:18.229 DEBUG 16644 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [TypeTaskEntity] because it is not cache-safe
+2020-12-17 21:40:18.285 DEBUG 16644 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [TaskEntity] because it is not cache-safe
+2020-12-17 21:40:18.293 DEBUG 16644 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [CategoryEntity] because it is not cache-safe
+2020-12-17 21:40:18.306 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for TypeTaskRepository…
 2020-12-17 21:40:18.322 DEBUG 16644 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:40:18.356 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for com.spacex.trelloassistant.models.repository.TypeTaskRepository.
+2020-12-17 21:40:18.356 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for TypeTaskRepository.
 2020-12-17 21:40:18.363 DEBUG 16644 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'taskRepository'
 2020-12-17 21:40:18.369 DEBUG 16644 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:40:18.370 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for com.spacex.trelloassistant.models.repository.TaskRepository…
+2020-12-17 21:40:18.370 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for TaskRepository…
 2020-12-17 21:40:18.371 DEBUG 16644 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:40:18.380 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for com.spacex.trelloassistant.models.repository.TaskRepository.
+2020-12-17 21:40:18.380 DEBUG 16644 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for TaskRepository.
 2020-12-17 21:40:18.476 DEBUG 16644 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'serviceModelToSwagger2MapperImpl'
 2020-12-17 21:40:18.536 DEBUG 16644 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'modelMapperImpl'
 2020-12-17 21:40:18.548 DEBUG 16644 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'parameterMapperImpl'
@@ -4298,7 +4298,7 @@ Cookie: JSESSIONID=710531A5CD0639CA0FE2B9D32D1242E4; Idea-41d610d0=8e3ca3fd-5ca9
 2020-12-17 21:46:47.540 DEBUG 16644 --- [http-nio-8080-exec-8] o.a.c.loader.WebappClassLoaderBase       :     --> Returning ClassNotFoundException
 2020-12-17 21:46:47.542 DEBUG 16644 --- [http-nio-8080-exec-8] o.a.c.loader.WebappClassLoaderBase       :     findClass(com.spacex.trelloassistant.models.entity.TaskEntityCustomizer)
 2020-12-17 21:46:47.544 DEBUG 16644 --- [http-nio-8080-exec-8] o.a.c.loader.WebappClassLoaderBase       :     --> Returning ClassNotFoundException
-2020-12-17 21:46:47.544 DEBUG 16644 --- [http-nio-8080-exec-8] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.TaskEntity] because it is not cache-safe
+2020-12-17 21:46:47.544 DEBUG 16644 --- [http-nio-8080-exec-8] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [TaskEntity] because it is not cache-safe
 2020-12-17 21:46:47.585 DEBUG 16644 --- [http-nio-8080-exec-8] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
 2020-12-17 21:46:47.585 DEBUG 16644 --- [http-nio-8080-exec-8] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(2029825820<open>)]
 2020-12-17 21:46:47.602 DEBUG 16644 --- [http-nio-8080-exec-8] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
@@ -4878,17 +4878,17 @@ org.springframework.boot.devtools.restart.classloader.RestartClassLoader@21c9d65
 2020-12-17 21:56:59.765 DEBUG 2296 --- [restartedMain] .c.JpaMetamodelMappingContextFactoryBean : Finished initializing JpaMetamodelMappingContext!
 2020-12-17 21:56:59.799 DEBUG 2296 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
 2020-12-17 21:57:00.005 DEBUG 2296 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:57:00.046 DEBUG 2296 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.TypeTaskEntity] because it is not cache-safe
-2020-12-17 21:57:00.086 DEBUG 2296 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.TaskEntity] because it is not cache-safe
-2020-12-17 21:57:00.095 DEBUG 2296 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.CategoryEntity] because it is not cache-safe
-2020-12-17 21:57:00.108 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for com.spacex.trelloassistant.models.repository.TypeTaskRepository…
+2020-12-17 21:57:00.046 DEBUG 2296 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [TypeTaskEntity] because it is not cache-safe
+2020-12-17 21:57:00.086 DEBUG 2296 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [TaskEntity] because it is not cache-safe
+2020-12-17 21:57:00.095 DEBUG 2296 --- [restartedMain] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [CategoryEntity] because it is not cache-safe
+2020-12-17 21:57:00.108 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for TypeTaskRepository…
 2020-12-17 21:57:00.125 DEBUG 2296 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:57:00.161 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for com.spacex.trelloassistant.models.repository.TypeTaskRepository.
+2020-12-17 21:57:00.161 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for TypeTaskRepository.
 2020-12-17 21:57:00.167 DEBUG 2296 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'taskRepository'
 2020-12-17 21:57:00.174 DEBUG 2296 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:57:00.175 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for com.spacex.trelloassistant.models.repository.TaskRepository…
+2020-12-17 21:57:00.175 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for TaskRepository…
 2020-12-17 21:57:00.176 DEBUG 2296 --- [restartedMain] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2020-12-17 21:57:00.184 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for com.spacex.trelloassistant.models.repository.TaskRepository.
+2020-12-17 21:57:00.184 DEBUG 2296 --- [restartedMain] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for TaskRepository.
 2020-12-17 21:57:00.234 DEBUG 2296 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'serviceModelToSwagger2MapperImpl'
 2020-12-17 21:57:00.244 DEBUG 2296 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'modelMapperImpl'
 2020-12-17 21:57:00.252 DEBUG 2296 --- [restartedMain] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'parameterMapperImpl'
@@ -8007,7 +8007,7 @@ Cookie: JSESSIONID=710531A5CD0639CA0FE2B9D32D1242E4; Idea-41d610d0=8e3ca3fd-5ca9
 2020-12-17 21:57:28.505 DEBUG 2296 --- [http-nio-8080-exec-1] o.a.c.loader.WebappClassLoaderBase       :     --> Returning ClassNotFoundException
 2020-12-17 21:57:28.507 DEBUG 2296 --- [http-nio-8080-exec-1] o.a.c.loader.WebappClassLoaderBase       :     findClass(com.spacex.trelloassistant.models.entity.TaskEntityCustomizer)
 2020-12-17 21:57:28.510 DEBUG 2296 --- [http-nio-8080-exec-1] o.a.c.loader.WebappClassLoaderBase       :     --> Returning ClassNotFoundException
-2020-12-17 21:57:28.511 DEBUG 2296 --- [http-nio-8080-exec-1] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [com.spacex.trelloassistant.models.entity.TaskEntity] because it is not cache-safe
+2020-12-17 21:57:28.511 DEBUG 2296 --- [http-nio-8080-exec-1] o.s.beans.CachedIntrospectionResults     : Not strongly caching class [TaskEntity] because it is not cache-safe
 2020-12-17 21:57:28.558 DEBUG 2296 --- [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
 2020-12-17 21:57:28.558 DEBUG 2296 --- [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(2123437900<open>)]
 2020-12-17 21:57:28.576 DEBUG 2296 --- [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
