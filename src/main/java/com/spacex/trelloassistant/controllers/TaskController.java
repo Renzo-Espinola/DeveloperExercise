@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping("/Api Tasks")
+@RequestMapping("/v1/Tasks")
 public class TaskController {
     private static Logger logger = LoggerFactory.getLogger(TaskController.class);
     @Autowired
@@ -29,14 +29,13 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.CREATED).body(taskEntityDb);
 
     }
-    @GetMapping
-    @RequestMapping("listAll")
+    @GetMapping("/{listAll}")
     public ResponseEntity<?>listAll() {return ResponseEntity.ok().body(taskService.findAll()); }
 
     @GetMapping("/{id}")
     public ResponseEntity<?>findIdTask(@PathVariable Long id) {
         Optional<TaskEntity> task = taskService.findBy(id);
-        if (task.isEmpty()) {
+        if (!task.isPresent()) {
             logger.error("ERROR TASKS NOT FOUND");
             return ResponseEntity.notFound().build();
         }
@@ -44,10 +43,9 @@ public class TaskController {
         return ResponseEntity.ok(task);
     }
     @PutMapping({"/{id}"})
-
     public ResponseEntity<?> editTask(@RequestBody TaskEntity taskEntity, @PathVariable Long id){
         Optional<TaskEntity> task1 = taskService.findBy(id);
-        if(task1.isEmpty()){
+        if(!task1.isPresent()){
             logger.error("ERROR TASKS NOT FOUND");
             return ResponseEntity.notFound().build();
         }
@@ -63,7 +61,7 @@ public class TaskController {
     public ResponseEntity<?> deleteTask(@PathVariable Long id){
         taskService.deleteBy(id);
         logger.warn("TASKS DELETED");
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
     
 

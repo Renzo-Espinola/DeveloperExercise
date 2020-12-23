@@ -11,5 +11,5 @@ public interface ITaskService {
     Iterable<TaskEntity>findAll();
     String save (TaskEntity taskEntity);
     Optional<TaskEntity> findBy(Long id);
-    String deleteBy (Long id);
+    void deleteBy (Long id);
 }

@@ -78,7 +78,7 @@ public class TaskServiceImpl implements ITaskService {
     }
 
     @Override
-    public String deleteBy(Long id) {
+    public void deleteBy(Long id) {
         String message= null;
         try {
             if (id != null) {
@@ -89,7 +89,7 @@ public class TaskServiceImpl implements ITaskService {
         } catch (ObjectNotFoundException ob) {
             String messageObError = ob.getMessage();
         }
-        return message;
+        System.out.println(message);
     }
 
 }
